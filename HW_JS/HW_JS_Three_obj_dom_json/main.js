@@ -164,19 +164,19 @@ let bag = {
 
 console.log("Task 4 ______________________________________________________________");
 // Дан массив:
-    let users = [
-        {name: 'vasya', age: 31, status: false},
-        {name: 'petya', age: 30, status: true},
-        {name: 'kolya', age: 29, status: true},
-        {name: 'olya', age: 28, status: false},
-        {name: 'max', age: 30, status: true},
-        {name: 'anya', age: 31, status: false},
-        {name: 'oleg', age: 28, status: false},
-        {name: 'andrey', age: 29, status: true},
-        {name: 'masha', age: 30, status: true},
-        {name: 'olya', age: 31, status: false},
-        {name: 'max', age: 31, status: true}
-    ];
+let users = [
+    {name: 'vasya', age: 31, status: false},
+    {name: 'petya', age: 30, status: true},
+    {name: 'kolya', age: 29, status: true},
+    {name: 'olya', age: 28, status: false},
+    {name: 'max', age: 30, status: true},
+    {name: 'anya', age: 31, status: false},
+    {name: 'oleg', age: 28, status: false},
+    {name: 'andrey', age: 29, status: true},
+    {name: 'masha', age: 30, status: true},
+    {name: 'olya', age: 31, status: false},
+    {name: 'max', age: 31, status: true}
+];
 // - звернутися в відповідну ячейку масиву і відповідний параметр об'єкта і вивести в консольх наступне
 // - статус Андрія
 
@@ -185,7 +185,7 @@ console.log(users[7].status);
 
 // V - 2
 for (let i = 0; i < users.length; i++) {
-    if (users[i].name === 'andrey'){
+    if (users[i].name === 'andrey') {
         console.log(users[i].status)
     }
 }
@@ -227,33 +227,61 @@ for (let i = 0; i < users.length; i++) {
 console.log("Task 5 ______________________________________________________________");
 // -Візьміть файл template1.html, підключіть до нього скрипт, і працюйте в ньому.
 // -- Напишіть код,  який за допомоги document.getElementById або document.getElementsByClassName або document.getElementsByTagName :
-// - отримує текст з параграфа з id "content"
+// -- отримує текст з параграфа з id "content"
 let content = document.getElementById('content');
 console.log(content);
 
+console.log("Task 6 ______________________________________________________________");
 // - отримує текст з блоку з id "rules"
-let ruls = document.getElementById('rules');
-console.log(ruls);
+let rul = document.getElementById('rules');
+console.log(rul);
 
 let rules = document.getElementsByTagName('div');
 console.log(rules);
 
+let fc = document.getElementsByClassName('fc_rules')
+console.log(fc);
+
+console.log("Task 7 ______________________________________________________________");
 // - замініть текст параграфа з id 'content' на будь-який інший
 content.innerText = 'NEW CONTENT';
 
+console.log("Task 8 ______________________________________________________________");
 // - замініть текст параграфа з id 'rules' на будь-який інший
-ruls.innerText = 'NEW RULES';
+rul.innerText = 'NEW RULES';
 
+console.log("Task 9 ______________________________________________________________");
 // - змініть кожному елементу колір фону на червоний
 content.style.backgroundColor = 'red';
-ruls.style.backgroundColor = 'red';
+rul.style.backgroundColor = 'red';
+for (let i = 0; i < fc.length; i++) {
+    fc[i].style.backgroundColor = 'red';
+}
 
+console.log("Task 10 ______________________________________________________________");
 // - змініть кожному елементу колір тексту на синій
-content.style.color = 'blue';
-ruls.style.color = 'blue';
 
-let qwe = document.getElementsByClassName('fc_rules');
-qwe.style.color = 'blue';
+// ----------   Variant - 1 --------------
+// content.style.color = 'blue';
+// rul.style.color = 'blue';
+// for (let i = 0; i < fc.length; i++) {
+//     fc[i].style.color = 'blue';
+// }
+
+// ----------   Variant - 2 --------------
+// не виходить перебрати масив 'fc' - що не так роблю???
+
+let colorBlue = [content, rul, fc];
+for (let i = 0; i < colorBlue.length; i++) {
+    if (typeof colorBlue[i] === 'object') {
+        colorBlue[i].style.color = 'blue'
+    } else {
+        let XXX = colorBlue[i];
+        for (let value of XXX) {
+            value.style.color = 'blue';
+        }
+    }
+}
 
 // - отримати весь список класів елемента з id=rules і вивести їх в console.log
 // - отримати всі елементи з класом fc_rules
