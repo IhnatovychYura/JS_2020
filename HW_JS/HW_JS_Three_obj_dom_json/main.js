@@ -261,28 +261,42 @@ for (let i = 0; i < fc.length; i++) {
 console.log("Task 10 ______________________________________________________________");
 // - змініть кожному елементу колір тексту на синій
 
-// ----------   Variant - 1 --------------
-// content.style.color = 'blue';
-// rul.style.color = 'blue';
-// for (let i = 0; i < fc.length; i++) {
-//     fc[i].style.color = 'blue';
-// }
+//----------   Variant - 1 --------------
+content.style.color = 'blue';
+rul.style.color = 'blue';
+for (let i = 0; i < fc.length; i++) {
+    fc[i].style.color = 'blue';
+}
 
 // ----------   Variant - 2 --------------
 // не виходить перебрати масив 'fc' - що не так роблю???
 
-let colorBlue = [content, rul, fc];
-for (let i = 0; i < colorBlue.length; i++) {
-    if (typeof colorBlue[i] === 'object') {
-        colorBlue[i].style.color = 'blue'
-    } else {
-        let XXX = colorBlue[i];
-        for (let value of XXX) {
-            value.style.color = 'blue';
-        }
-    }
-}
+// let colorBlue = [content, rul, fc];
+// for (let i = 0; i < colorBlue.length; i++) {
+//     if (typeof colorBlue[i] === 'object') {
+//         colorBlue[i].style.color = 'blue'
+//     } else {
+//         let XXX = colorBlue[i];
+//         for (let value of XXX) {
+//             value.style.color = 'blue';
+//         }
+//     }
+// }
 
+console.log("Task 10 ______________________________________________________________");
 // - отримати весь список класів елемента з id=rules і вивести їх в console.log
+
+console.log(rul.classList)
+
+console.log("Task 11 ______________________________________________________________");
 // - отримати всі елементи з класом fc_rules
+
+console.log(fc); // вже виводив вище
+
 // - поміняти колір тексту у всіх елементів fc_rules на червоний
+console.log("Task 11 ______________________________________________________________");
+// вже робив вище і фон червоний відповідно тоді текст пропаде
+
+// for (let i = 0; i < fc.length; i++) {
+//     fc[i].style.color = 'red';
+// }
