@@ -577,60 +577,146 @@ function concatObj(usersArray, citiesArray) {
 console.log(usersWithId); // перевіряємо чи не мутувало вихідний масив
 console.log(concatObj(usersWithId, citiesWithId));
 
+console.log("Task 20 ______________________________________________________________");
 // ***- беремо завдання з правилами з укроку №3 :
 // Та робимо це функцією.При цьому правила отримувати через аргумент.
 // "Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
 // При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
 // Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rule.html
-//
-// 			let rules = [
-// 				{
-// 					title: 'Первое правило Бойцовского клуба.',
-// 					body: 'Никому не рассказывать о Бойцовском клубе.'
-// 				},
-// 				{
-// 					title: 'Второе правило Бойцовского клуба.',
-// 					body: 'Никогда никому не рассказывать о Бойцовском клубе.'
-// 				},
-// 				{
-// 					title: 'Третье правило Бойцовского клуба.',
-// 					body: 'В схватке участвуют только двое.'
-// 				},
-// 				{
-// 					title: 'Четвертое правило Бойцовского клуба.',
-// 					body: 'Не более одного поединка за один раз.'
-// 				},
-// 				{
-// 					title: 'Пятое правило Бойцовского клуба.',
-// 					body: 'Бойцы сражаются без обуви и голые по пояс.'
-// 				},
-// 				{
-// 					title: 'Шестое правило Бойцовского клуба.',
-// 					body: 'Поединок продолжается столько, сколько потребуется.'
-// 				},
-// 				{
-// 					title: 'Седьмое правило Бойцовского клуба.',
-// 					body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
-// 				},
-// 				{
-// 					title: 'Восьмое и последнее правило Бойцовского клуба.',
-// 					body: 'Новичок обязан принять бой.'
-// 				},
-//
-// 			];
-// "
-//
+let rules = [
+    {
+        title: 'Первое правило Бойцовского клуба.',
+        body: 'Никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Второе правило Бойцовского клуба.',
+        body: 'Никогда никому не рассказывать о Бойцовском клубе.'
+    },
+    {
+        title: 'Третье правило Бойцовского клуба.',
+        body: 'В схватке участвуют только двое.'
+    },
+    {
+        title: 'Четвертое правило Бойцовского клуба.',
+        body: 'Не более одного поединка за один раз.'
+    },
+    {
+        title: 'Пятое правило Бойцовского клуба.',
+        body: 'Бойцы сражаются без обуви и голые по пояс.'
+    },
+    {
+        title: 'Шестое правило Бойцовского клуба.',
+        body: 'Поединок продолжается столько, сколько потребуется.'
+    },
+    {
+        title: 'Седьмое правило Бойцовского клуба.',
+        body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
+    },
+    {
+        title: 'Восьмое и последнее правило Бойцовского клуба.',
+        body: 'Новичок обязан принять бой.'
+    },
+
+];
+
+function showRules(arrayOfRules) {
+    let wrapDiv = document.createElement('div');
+    wrapDiv.classList.add('wrap');
+    document.body.appendChild(wrapDiv);
+
+    for (let i = 0; i < arrayOfRules.length; i++) {
+        const rules = arrayOfRules[i];
+        let div = document.createElement('div');
+        let number = document.createElement('div');
+        let title = document.createElement('h1');
+        let text = document.createElement('p');
+
+        number.innerHTML = `${i + 1}`;
+        title.innerHTML = `${rules.title}`;
+        text.innerHTML = rules.body;
+
+        number.style.width = '5%';
+        number.style.height = '100px';
+        number.style.float = 'left';
+        number.style.clear = 'both';
+
+        title.style.width = '65%';
+        title.style.float = 'left';
+        title.style.height = '100px';
+        title.style.margin = '0'
+
+        text.style.width = '30%';
+        text.style.float = 'left';
+        text.style.height = '100px';
+        text.style.margin = '0'
+
+        div.style.border = '1px solid black'
+        div.style.height = '100px';
+
+        div.appendChild(number);
+        div.appendChild(title);
+        div.appendChild(text);
+
+        wrapDiv.appendChild(div);
+    }
+}
+
+showRules(rules);
+
 // ===========додаткове від віктора========
+console.log("Task 21 ______________________________________________________________");
 // 1) Точная степень двойки.
 // Дано натуральное число N.
 // Выведите слово YES, если число N является точной степенью двойки,
 // или слово NO в противном случае.
 // Операцией возведения в степень пользоваться нельзя!
+
+// ============ Variant 1 (підглянув в інтернеті) ===================
+// let num = +prompt('Enter number', 2);
 //
+// function power(number) {
+//     if (typeof number !== 'number')
+//         return 'Not a number';
+//
+//     if (number && (number & (number - 1)) === 0)
+//         return 'YES'
+//
+//     else
+//         return 'NO'
+// }
+//
+// let result = power(num);
+// console.log(result)
+
+// ============ Variant 2 (підглянув в інтернеті) ===================
+let num = +prompt('Enter any number and I will say if it`s a power of two', 2);
+
+function power(number) {
+    while (number >= 1) {
+        if (number === 1){
+            result = 'YES';
+        } else {
+            result = 'NO'
+        }
+        number /= 2;
+    }
+    return result
+}
+
+console.log(power(num));
+
+let smth = num & (num - 1)
+console.log(smth)
+
+console.log("Task 22 ______________________________________________________________");
 // 2) Deep Copy
 // реалізувати глибоке копіювання обєкту за допомогою рекурсій
-//
+
+console.log("Task 23 ______________________________________________________________");
 // 3) Flat
 // Вирівняти багаторівневий масив в однорівневий
 // [1,3, ['Hello, 'Wordd', [9,6,1]], ['oops'], 9] -> [1, 3, 'Hello, 'Wordd', 9, 6, 1, 'oops', 9]
+
+let array7 = [1,3, ['Hello', 'Wordd', [9,6,1]], ['oops'], 9];
+console.log(array7.flat(2));
 // ===========додаткове========
