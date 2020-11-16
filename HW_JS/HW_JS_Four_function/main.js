@@ -705,9 +705,6 @@ function power(number) {
 
 console.log(power(num));
 
-let smth = num & (num - 1)
-console.log(smth)
-
 console.log("Task 22 ______________________________________________________________");
 // 2) Deep Copy
 // реалізувати глибоке копіювання обєкту за допомогою рекурсій
