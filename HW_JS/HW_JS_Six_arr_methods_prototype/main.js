@@ -141,8 +141,10 @@ console.log("Task 13 ___________________________________________________________
 // console.log(users);
 // console.log(mapUsers);
 
-let redUsers = users.reduce((acc, value, index)=>{
-    value.index = index
+let redUsers = JSON.parse(JSON.stringify(users));
+    redUsers.reduce((acc, value,)=>{
+
+    value.id = Math.round(Math.random()*(10-1) +1)
     acc.push(value)
 
     return acc
@@ -151,8 +153,16 @@ let redUsers = users.reduce((acc, value, index)=>{
 console.log(users);
 console.log(redUsers);
 
+console.log("Task 14 ______________________________________________________________");
 // - відсортувати його за індентифікатором
-//
-//
+redUsers.sort((a, b)=>{
+    return a.id - b.id
+})
+
+console.log(redUsers);
+
+console.log("Task 15 ______________________________________________________________");
 // -- наисать функцию калькулятора с 2мя числами и колбеком
+
+console.log("Task 16 ______________________________________________________________");
 // -- наисать функцию калькулятора с 3мя числами и колбеком
