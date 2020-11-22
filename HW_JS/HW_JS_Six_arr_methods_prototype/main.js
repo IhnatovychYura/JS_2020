@@ -29,13 +29,13 @@ console.log(sortNumThree);
 console.log("Task 3 ______________________________________________________________");
 // -- при помощи filter получить числа кратные 3
 
-let filtNumOne = numbers.filter(value => value % 3 === 0)
+let filtNumOne = numbers.filter(value => value % 3 === 0 && value !== 0)
 
 console.log(filtNumOne);
 
 console.log("Task 4 ______________________________________________________________");
 // -- при помощи filter получить числа кратные 10
-let filtNumTwo = numbers.filter(value => value % 10 === 0)
+let filtNumTwo = numbers.filter(value => value % 10 === 0 && value !== 0)
 
 console.log(filtNumTwo);
 
@@ -80,7 +80,7 @@ console.log("Task 8 ____________________________________________________________
 // -- отсортировать его по алфавиту  в нисходящем порядке.
 
 let sortDogsTwo = dogs.sort((a, b) => {
-    if (a > b)
+    if (a.toLowerCase() > b.toLowerCase())
         return -1
 })
 console.log(sortDogsTwo);
@@ -142,6 +142,7 @@ console.log("Task 13 ___________________________________________________________
 // console.log(mapUsers);
 
 let redUsers = JSON.parse(JSON.stringify(users));
+
     redUsers.reduce((acc, value,)=>{
 
     value.id = Math.round(Math.random()*(10-1) +1)

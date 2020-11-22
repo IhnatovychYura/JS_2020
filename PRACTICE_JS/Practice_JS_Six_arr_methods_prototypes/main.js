@@ -302,7 +302,7 @@ console.log(sortUsersFive);
 console.log("Task 18 ______________________________________________________________");
 // -- отсортировать его по имени пользователей в обратном порядке
 let sortUsersSix = usersWithAddress.sort((a, b) => {
-    if (a.name > b.name) {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
         return -1
     }
 })
