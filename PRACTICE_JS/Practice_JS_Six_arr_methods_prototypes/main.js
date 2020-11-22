@@ -254,7 +254,7 @@ let usersWithAddress = [
         age: 31,
         status: false,
         address: {city: 'Lviv', street: 'Shevchenko', number: 16}
-        }, {
+    }, {
         id: 11,
         name: 'max',
         age: 31,
@@ -294,7 +294,7 @@ console.log("Task 17 ___________________________________________________________
 // -- отсортировать его по имени пользователей
 let sortUsersFive = usersWithAddress.sort((a, b) => {
     if (b.name > a.name) {
-        return-1
+        return -1
     }
 })
 console.log(sortUsersFive);
@@ -303,7 +303,7 @@ console.log("Task 18 ___________________________________________________________
 // -- отсортировать его по имени пользователей в обратном порядке
 let sortUsersSix = usersWithAddress.sort((a, b) => {
     if (a.name > b.name) {
-        return-1
+        return -1
     }
 })
 console.log(sortUsersSix);
@@ -312,7 +312,7 @@ console.log("Task 19 ___________________________________________________________
 // -- отсортировать его по названию улицы  в алфавитном порядке
 let sortUsersSeven = usersWithAddress.sort((a, b) => {
     if (b.address.street > a.address.street) {
-        return-1
+        return -1
     }
 })
 console.log(sortUsersSeven);
@@ -321,7 +321,7 @@ console.log("Task 20 ___________________________________________________________
 // -- отсортировать его по номеру дома по возрастанию
 let sortUsersEight = usersWithAddress.sort((a, b) => {
     if (b.address.number > a.address.number) {
-        return-1
+        return -1
     }
 })
 console.log(sortUsersEight);
@@ -329,7 +329,7 @@ console.log(sortUsersEight);
 console.log("Task 21 ______________________________________________________________");
 // -- отфильтровать (оставить) тех кто младше 30
 let fltrOne = usersWithAddress.filter(value => {
-    if (value.age <= 30){
+    if (value.age <= 30) {
         return value
     }
 })
@@ -364,35 +364,35 @@ console.log(fltrFour);
 let carOne = {
     producer: 'bmw',
     power: 230,
-    owner: {name: 'Max', age: 30, experience: 17 },
+    owner: {name: 'Max', age: 30, experience: 17},
     price: 25000,
     year: 2017
 }
 let carTwo = {
     producer: 'mercedes',
     power: 160,
-    owner: {name: 'Yura', age: 25, experience: 7 },
+    owner: {name: 'Yura', age: 25, experience: 7},
     price: 5000,
     year: 1998
 }
 let carThree = {
     producer: 'mercedes',
     power: 400,
-    owner: {name: 'Zhora', age: 33, experience: 10 },
+    owner: {name: 'Zhora', age: 33, experience: 4},
     price: 35000,
     year: 2017
 }
 let carFour = {
     producer: 'bmw',
     power: 180,
-    owner: {name: 'Ded', age: 78, experience: 50 },
+    owner: {name: 'Ded', age: 78, experience: 50},
     price: 10000,
     year: 2012
 }
 let carFive = {
     producer: 'subaru',
     power: 190,
-    owner: {name: 'Shumaher', age: 35, experience: 30 },
+    owner: {name: 'Shumaher', age: 35, experience: 30},
     price: 4000,
     year: 1990
 }
@@ -400,7 +400,7 @@ let carFive = {
 let carSix = {
     producer: 'honda',
     power: 100,
-    owner: {name: 'Zenyk', age: 44, experience: 30 },
+    owner: {name: 'Zenyk', age: 44, experience: 30},
     price: 1000,
     year: 1989
 }
@@ -408,7 +408,7 @@ let carSix = {
 let carSeven = {
     producer: 'lexus',
     power: 200,
-    owner: {name: 'Mazhor', age: 50, experience: 30 },
+    owner: {name: 'Mazhor', age: 50, experience: 30},
     price: 55000,
     year: 2019
 }
@@ -416,7 +416,7 @@ let carSeven = {
 let carEight = {
     producer: 'Ferrari',
     power: 100500,
-    owner: {name: 'Portniagin', age: 39, experience: 20 },
+    owner: {name: 'Portniagin', age: 39, experience: 20},
     price: 155000,
     year: 2018
 }
@@ -424,7 +424,7 @@ let carEight = {
 let carNine = {
     producer: 'subaru',
     power: 199,
-    owner: {name: 'Stepan', age: 32, experience: 15 },
+    owner: {name: 'Stepan', age: 32, experience: 15},
     price: 15000,
     year: 2010
 }
@@ -432,20 +432,58 @@ let carNine = {
 let carTen = {
     producer: 'lanus',
     power: 60,
-    owner: {name: 'Myron', age: 40, experience: 20 },
+    owner: {name: 'Myron', age: 40, experience: 20},
     price: 100,
     year: 1998
 }
 
 let avtopark = [carOne, carTwo, carThree, carFour, carFive, carSix, carSeven, carEight, carNine, carTen]
-//     Зробили половину автопарку ремонт мотору, що збільшить потужність автомобілів на 10% (переприсвоєння змінної потужності).
+
+console.log("Task 25 ______________________________________________________________");
+//Зробили половину автопарку ремонт мотору, що збільшить потужність автомобілів на 10% (переприсвоєння змінної потужності).
 // На відремонтовані автомобілі найняти нових водіїв (переприсвоїти змінну водій).
+
+// for (let i=0; i<avtopark.length; i=+2 ){
+//     avtopark[i].power *= 1.1
+// }
+
+let tuningCars = JSON.parse(JSON.stringify(avtopark));
+tuningCars.map((value, index) => {
+    if (index % 2 === 0) {
+        value.power *= 1.1
+        value.owner.name = 'New Owner'
+        value.price *= 1.05
+    }
+})
+
+console.log('avtopark: ', avtopark);
+console.log('tuningCars: ', tuningCars);
+
+console.log("Task 26 ______________________________________________________________");
 // Для початку вкладіть всі наші створені автомобілі в масив cars.
-//     Далі необхідно рати кожну другу машинку (цикл з кроком в 2), та робити їй підвищення потужності двигуна на 10% та ціну на 5%
+// Вже зробив
+
+// Далі необхідно рати кожну другу машинку (цикл з кроком в 2), та робити їй підвищення потужності двигуна на 10% та ціну на 5%
+// Вже зробив
+
 // Після того зробити перевірку досвіду ВСІХ наших водіїв. Якщо досвід водія менший за 5 років, але його вік більший за 25, то необідно відправити його на курси підвищення кваліфікації, що збільшить йому досвід на 1 рік.
-//     Також спробуйте порахувати суму, яку потрібно потратити для покупки всіх цих авто в циклі
-//
-//
+tuningCars.reduce((acc, value) => {
+    if (value.owner.experience <= 5 && value.owner.age >= 25) {
+        value.owner.experience += 1
+    }
+}, [])
+
+console.log(tuningCars);
+
+console.log("Task 27 ______________________________________________________________");
+//Також спробуйте порахувати суму, яку потрібно потратити для покупки всіх цих авто в циклі
+let sumPrice = 0
+for (let i = 0; i < tuningCars.length; i++) {
+    sumPrice += tuningCars[i].price
+}
+console.log('Summary price of all cars: '+ sumPrice);
+
+console.log("Task 28 ______________________________________________________________");
 // Задача: дан отсортированный по возрастанию массив целых чисел. Необходимо вернуть наименьший и наибольший индекс заданного элемента.
 //     Входные данные: arr — массив целых чисел значения которых по модулю не больше 10. Размер массива не более 10 элементов.
 //     Вывод: наибольший и наименьший индекс в массиве заданного элемента. Если такого элемента нет в массиве, выведите -1.
@@ -456,3 +494,34 @@ let avtopark = [carOne, carTwo, carThree, carFour, carFive, carSix, carSeven, ca
 // Answer: MinIndex = 0, MaxIndex = 0.
 // 2. Key = 4
 // Answer: MinIndex = 3, MaxIndex = 6.
+
+let arr = [1, 2, 3, 4, 4, 4, 4, 7, 7, 9, 14];
+
+// ============= Variant 1 ==================
+function showIndex(array, key) {
+    let min = null;
+    let max = null;
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === key){
+            // if(!min) - це як тільки min стане true  йому присвоється і вже дальше перезаписуватись не буде
+            if (!min){
+                min = i;
+            }
+            // a max буде перезаписуватись поки не знайде останній подібний елемент
+            max = i;
+        }
+    }
+
+    console.log(`MinIndex = ${min}, MaxIndex = ${max}.`)
+}
+
+// ============= Variant 2 ==================
+// function showIndex(array, key) {
+//     let min = array.indexOf(key);
+//     let max = array.lastIndexOf(key);
+//
+//     console.log(`MinIndex = ${min}, MaxIndex = ${max}.`)
+// }
+
+showIndex(arr, 4)
