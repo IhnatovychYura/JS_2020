@@ -481,7 +481,7 @@ let sumPrice = 0
 for (let i = 0; i < tuningCars.length; i++) {
     sumPrice += tuningCars[i].price
 }
-console.log('Summary price of all cars: '+ sumPrice);
+console.log('Summary price of all cars: ' + sumPrice);
 
 console.log("Task 28 ______________________________________________________________");
 // Задача: дан отсортированный по возрастанию массив целых чисел. Необходимо вернуть наименьший и наибольший индекс заданного элемента.
@@ -499,17 +499,18 @@ let arr = [1, 2, 3, 4, 4, 4, 4, 7, 7, 9, 14];
 
 // ============= Variant 1 ==================
 function showIndex(array, key) {
-    let min = null;
-    let max = null;
+    let min = 0;
+    let max = 0;
 
     for (let i = 0; i < array.length; i++) {
-        if (array[i] === key){
-            // if(!min) - це як тільки min стане true  йому присвоється і вже дальше перезаписуватись не буде
-            if (!min){
-                min = i;
-            }
-            // a max буде перезаписуватись поки не знайде останній подібний елемент
-            max = i;
+        if (array[i] === key) {
+            min = i
+        }
+    }
+
+    for (let i = array.length; i >= 0; i--) {
+        if (array[i] === key) {
+            max = i
         }
     }
 
@@ -518,10 +519,29 @@ function showIndex(array, key) {
 
 // ============= Variant 2 ==================
 // function showIndex(array, key) {
+//     let min = null;
+//     let max = null;
+//
+//     for (let i = 0; i < array.length; i++) {
+//         if (array[i] === key){
+//             // if(!min) - це як тільки min стане true  йому присвоється і вже дальше перезаписуватись не буде
+//             if (!min){
+//                 min = i;
+//             }
+//             // a max буде перезаписуватись поки не знайде останній подібний елемент
+//             max = i;
+//         }
+//     }
+//
+//     console.log(`MinIndex = ${min}, MaxIndex = ${max}.`)
+// }
+
+// ============= Variant 3 ==================
+// function showIndex(array, key) {
 //     let min = array.indexOf(key);
 //     let max = array.lastIndexOf(key);
 //
 //     console.log(`MinIndex = ${min}, MaxIndex = ${max}.`)
 // }
 
-showIndex(arr, 4)
+showIndex(arr, 4);
