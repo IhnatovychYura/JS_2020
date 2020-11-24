@@ -30,7 +30,11 @@ btnTwo.innerText = 'DELETE ME, real me';
 divTwo.appendChild(btnTwo);
 document.body.appendChild(divTwo);
 
+// =================== VARIANT 1 =========================
 btnTwo.onclick = ()=>{btnTwo.style.display = 'none'}
+
+// =================== VARIANT 2 =========================
+// btnTwo.onclick = (ev)=>{ev.target.style.display = 'none'}
 
 console.log("Task 3______________________________________________________________");
 // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
@@ -55,29 +59,148 @@ confirm.onclick = () => {
 
 console.log("Task 4______________________________________________________________");
 // - Создайте меню, которое раскрывается/сворачивается при клике
+// =================== VARIANT 1 =========================
+
 let divFour = document.createElement('div');
-divFour.style.backgroundColor = 'lightgrey';
 
 let menu = document.createElement('button');
 menu.innerText = 'МЕНЮ';
 
-menu.onclick = () => {
+let divFive = document.createElement('div');
+divFive.style.backgroundColor = 'gold';
+divFive.style.width = '150px';
+divFive.hidden = true;
 
+let linkOne = document.createElement('a');
+linkOne.innerText = 'Закуски';
+linkOne.href = '#';
+linkOne.style.display = 'block';
+let linkTwo = document.createElement('a');
+linkTwo.innerText = 'Салати';
+linkTwo.href = '#';
+linkTwo.style.display = 'block';
+let linkThree = document.createElement('a');
+linkThree.innerText = 'Основні страви';
+linkThree.href = '#';
+linkThree.style.display = 'block';
+let linkFour = document.createElement('a');
+linkFour.innerText = 'Десерти';
+linkFour.href = '#';
+linkFour.style.display = 'block';
+
+menu.onclick = (ev) => {
+    divFive.hidden ? divFive.hidden = false : divFive.hidden = true
 }
 
 divFour.appendChild(menu);
+divFour.appendChild(divFive);
+divFive.appendChild(linkOne);
+divFive.appendChild(linkTwo);
+divFive.appendChild(linkThree);
+divFive.appendChild(linkFour);
+
 document.body.appendChild(divFour);
 
+// =================== VARIANT 2 =========================
+let a1 = document.getElementById('a1')
+let subMenu = document.getElementById('subMenu')
+subMenu.style.display = 'none'
 
+let flag = true;
 
+a1.onclick = (ev) =>{
+    if (flag) {
+        subMenu.style.display = 'block';
+        flag = false
+    } else {
+        subMenu.style.display = 'none';
+        flag = true
+    }
+}
+
+console.log("Task 5______________________________________________________________");
 // - Создать список комментариев , пример объекта коментария - {title : 'lorem', body:'lorem ipsum dolo sit ameti'}.
 //     Вывести список комментариев в документ, каждый в своем блоке.
 //     Добавьте каждому комментарию по кнопке для сворачивания его body.
-//
+
+let comments = [
+    {title : 'lorem', body:'lorem ipsum dolo sit ameti'},
+    {title : 'breakfast', body:'morning meal'},
+    {title : 'lunch', body:'short meal in the middle of the day'},
+    {title : 'supper', body:'last meal in the day'},
+    {title : 'dessert', body:'something sweet'},
+]
+
+function drowComments() {
+    comments.forEach(comment => {
+        let div = document.createElement('div')
+        div.innerText = `Title: ${comment.title}; Body: ${comment.body}`;
+        div.style.backgroundColor = 'pink';
+
+        const btn = document.createElement('button');
+        btn.innerText = 'REMOVE';
+
+        btn.onclick = (ev) => {
+            ev.target.parentElement.style.display = 'none'
+            console.log('REMOVE');
+        }
+
+        div.appendChild(btn);
+
+        document.body.appendChild(div);
+    })
+}
+
+drowComments();
+
+console.log("Task 6______________________________________________________________");
 // - створити 2 форми  по 2 інпути в кожній. ствоирити кнопку при кліку на яку считується та виводиться на консоль інформація з цих 2х форм.
-//     Кнопка повинна лежати за межами форм (Щоб ьуникнути  перезавантаження сторінки)
+// Кнопка повинна лежати за межами форм (Щоб ьуникнути  перезавантаження сторінки)
 // Доступ до інпутів через Forms API. Отже дайте формі та інпутам всі необхідні атрибути.
-//
+
+let formOne = document.createElement('form');
+let formTwo = document.createElement('form');
+let inputOneOne = document.createElement('input');
+let inputOneTwo = document.createElement('input');
+let inputTwoOne = document.createElement('input');
+let inputTwoTwo = document.createElement('input');
+let h3Name = document.createElement('h3');
+let h3Surname = document.createElement('h3');
+let pAge = document.createElement('p');
+let pGender = document.createElement('p');
+let btnThree = document.createElement('button');
+
+h3Name.innerText = 'Enter your name:';
+h3Surname.innerText = 'Enter your surname:';
+pAge.innerText = 'Enter your age:';
+pGender.innerText = 'Enter your gender:';
+btnThree.innerText = 'CONFIRM ALL INFO';
+
+formOne.attributes.name = 'pipForm';
+formTwo.attributes.name = 'ageForm';
+input.attributes.name = 'clientText';
+
+formOne.appendChild(h3Name);
+formOne.appendChild(inputOneOne);
+formOne.appendChild(h3Surname);
+formOne.appendChild(inputOneTwo);
+formTwo.appendChild(pAge);
+formTwo.appendChild(inputTwoOne);
+formTwo.appendChild(pGender);
+formTwo.appendChild(inputTwoTwo);
+
+document.body.appendChild(formOne);
+document.body.appendChild(formTwo);
+document.body.appendChild(btnThree);
+
+btnThree.onclick = (ev) => {
+    console.log(`
+    NAME: ${inputOneOne.value}, 
+    SURNAME: ${inputOneTwo.value}, 
+    AGE: ${inputTwoOne.value}, 
+    GENDER: ${inputTwoTwo.value}`);
+}
+
 // - Створити функцію, яка генерує таблицю.
 //     Перший аргумент визначає кількість строк.
 //     Другий параметр визначає кліькіть ячеєк в кожній строці.
