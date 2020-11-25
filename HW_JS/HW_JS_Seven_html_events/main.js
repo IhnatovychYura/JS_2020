@@ -176,9 +176,12 @@ pAge.innerText = 'Enter your age:';
 pGender.innerText = 'Enter your gender:';
 btnThree.innerText = 'CONFIRM ALL INFO';
 
-formOne.attributes.name = 'pipForm';
-formTwo.attributes.name = 'ageForm';
-input.attributes.name = 'clientText';
+formOne.name = 'pipForm';
+formTwo.name = 'ageForm';
+inputOneOne.name = 'clientName';
+inputOneTwo.name = 'clientSurname';
+inputTwoOne.name = 'clientAge';
+inputTwoTwo.name = 'clientGender';
 
 formOne.appendChild(h3Name);
 formOne.appendChild(inputOneOne);
@@ -193,6 +196,18 @@ document.body.appendChild(formOne);
 document.body.appendChild(formTwo);
 document.body.appendChild(btnThree);
 
+
+// FORMS API
+document.forms.pipForm.clientName.oninput = () => {
+    let name = document.forms.pipForm.clientName.value;
+    console.log(`NAME: ${name}`);
+}
+document.forms.pipForm.clientSurname.oninput = () => {
+    let surname = document.forms.pipForm.clientSurname.value;
+    console.log(`SURNAME: ${surname}`);
+}
+
+// Classic variant
 btnThree.onclick = (ev) => {
     console.log(`
     NAME: ${inputOneOne.value}, 
