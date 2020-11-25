@@ -216,19 +216,111 @@ btnThree.onclick = (ev) => {
     GENDER: ${inputTwoTwo.value}`);
 }
 
+console.log("Task 7______________________________________________________________");
 // - Створити функцію, яка генерує таблицю.
 //     Перший аргумент визначає кількість строк.
 //     Другий параметр визначає кліькіть ячеєк в кожній строці.
 //     Третій параметр визначає елемент в який потрібно таблицю додати.
+
+// let divSix = document.createElement('div');
+// document.body.appendChild(divSix);
 //
+// function createTable(raw, column, tag) {
+//     let table = document.createElement('table');
+//     let caption = document.createElement('caption');
+//     caption.innerText = 'NEW TABLE';
+//     table.border = '1'; // Чому перекреслило????
+//     table.appendChild(caption);
 //
+//     for (let i = 0; i < raw; i++) {
+//        let tr = document.createElement('tr');
+//         for (let j = 0; j < column; j++) {
+//             let td = document.createElement('td');
+//             td.innerHTML = i.toString() + j.toString();
+//             tr.appendChild(td);
+//         }
+//         table.appendChild(tr);
+//     }
+//     tag.appendChild(table)
+// }
+//
+// createTable(5, 6, divSix);
+
+console.log("Task 8______________________________________________________________");
+document.write(`</br> Task 8_______________________________________________________________________`);
 // - Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
 //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
 // (Додатковачастина для завдання)
-//
+
+let divSix = document.createElement('div');
+
+let inputRaw = document.createElement('input');
+let inputColumn = document.createElement('input');
+let inputContent = document.createElement('input');
+let pRaw = document.createElement('p');
+let pColumn = document.createElement('p');
+let pContent = document.createElement('p');
+let btnFour = document.createElement('button');
+
+pRaw.innerText = 'Enter number of raws';
+pColumn.innerText = 'Enter number of columns';
+pContent.innerText = 'Enter content you want to see';
+btnFour.innerText = 'Create Table';
+
+document.body.appendChild(divSix);
+divSix.appendChild(pRaw);
+divSix.appendChild(inputRaw);
+divSix.appendChild(pColumn);
+divSix.appendChild(inputColumn);
+divSix.appendChild(pContent);
+divSix.appendChild(inputContent);
+divSix.appendChild(btnFour);
+
+btnFour.onclick = () => {
+    createTable(inputRaw.value, inputColumn.value, inputContent.value, divSix);
+}
+
+function createTable(raw, column, content, tag) {
+    let table = document.createElement('table');
+    let caption = document.createElement('caption');
+    caption.innerText = 'NEW TABLE';
+    table.border = '1'; // Чому перекреслило????
+    table.appendChild(caption);
+
+    for (let i = 0; i < raw; i++) {
+        let tr = document.createElement('tr');
+        for (let j = 0; j < column; j++) {
+            let td = document.createElement('td');
+            td.innerHTML = content + '' + i + j;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    tag.appendChild(table)
+}
+
+console.log("Task 9______________________________________________________________");
 // - Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо нажатием на стрелочки.
-//
-//
+
+let btnRight = document.querySelector(".btnRight");
+let slides = document.querySelectorAll("img");
+
+let i = 0;
+
+btnRight.addEventListener("click", function () {
+    ++i
+    if (i >= slides.length) {
+        slides[i-1].classList.remove("block");
+        i = 0;
+        slides[i].classList.add("block");
+    } else {
+        slides[i-1].classList.remove("block");
+        slides[i].classList.add("block");
+    }
+})
+
+
+
 // - Сворити масив не цензцрних слів.
 //     Сворити інпут текстового типу.
 //     Якщо людина вводить слово і воно міститься в масиві не цензурних слів
