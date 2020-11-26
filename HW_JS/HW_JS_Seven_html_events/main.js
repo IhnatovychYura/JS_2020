@@ -13,7 +13,7 @@ btn.innerText = 'DELETE ME';
 div.appendChild(btn);
 document.body.appendChild(div);
 
-btn.onclick = (ev)=>{
+btn.onclick = (ev) => {
     console.log(ev.target.parentElement);
     ev.target.parentElement.style.display = 'none'
 }
@@ -31,7 +31,9 @@ divTwo.appendChild(btnTwo);
 document.body.appendChild(divTwo);
 
 // =================== VARIANT 1 =========================
-btnTwo.onclick = ()=>{btnTwo.style.display = 'none'}
+btnTwo.onclick = () => {
+    btnTwo.style.display = 'none'
+}
 
 // =================== VARIANT 2 =========================
 // btnTwo.onclick = (ev)=>{ev.target.style.display = 'none'}
@@ -43,7 +45,7 @@ divThree.innerText = 'Enter your age: ';
 divThree.style.backgroundColor = 'lightblue';
 
 let input = document.createElement('input');
-input.value ='18';
+input.value = '18';
 
 let confirm = document.createElement('button');
 confirm.innerText = 'confirm';
@@ -108,7 +110,7 @@ subMenu.style.display = 'none'
 
 let flag = true;
 
-a1.onclick = (ev) =>{
+a1.onclick = (ev) => {
     if (flag) {
         subMenu.style.display = 'block';
         flag = false
@@ -124,11 +126,11 @@ console.log("Task 5_____________________________________________________________
 //     Добавьте каждому комментарию по кнопке для сворачивания его body.
 
 let comments = [
-    {title : 'lorem', body:'lorem ipsum dolo sit ameti'},
-    {title : 'breakfast', body:'morning meal'},
-    {title : 'lunch', body:'short meal in the middle of the day'},
-    {title : 'supper', body:'last meal in the day'},
-    {title : 'dessert', body:'something sweet'},
+    {title: 'lorem', body: 'lorem ipsum dolo sit ameti'},
+    {title: 'breakfast', body: 'morning meal'},
+    {title: 'lunch', body: 'short meal in the middle of the day'},
+    {title: 'supper', body: 'last meal in the day'},
+    {title: 'dessert', body: 'something sweet'},
 ]
 
 function drowComments() {
@@ -301,44 +303,121 @@ function createTable(raw, column, content, tag) {
 
 console.log("Task 9______________________________________________________________");
 // - Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо нажатием на стрелочки.
+// =========================== VARIANT 1 ==============================
+// let btnRight = document.querySelector(".btnRight");
+// let slides = document.querySelectorAll("img");
+//
+// let i = 0;
+//
+// btnRight.addEventListener("click", function () {
+//     ++i
+//     if (i >= slides.length) {
+//         slides[i-1].classList.remove("block");
+//         i = 0;
+//         slides[i].classList.add("block");
+//     } else {
+//         slides[i-1].classList.remove("block");
+//         slides[i].classList.add("block");
+//     }
+// })
 
-let btnRight = document.querySelector(".btnRight");
-let slides = document.querySelectorAll("img");
+// =========================== VARIANT 2 ==============================
+let imgArrey = [
+    {
+        id: 1,
+        img_url: './images2/ferrero_8000500180709_images_13587143467.jpg',
+    }, {
+        id: 2,
+        img_url: './images2/ferrero_8000500180709_images_13587144247.jpg',
+    }, {
+        id: 3,
+        img_url: './images2/ferrero_8000500180709_images_13587144805.jpg',
+    },
+]
+let divSeven = document.createElement('div');
+let img = document.createElement('img');
+let btnLeft = document.createElement('button');
+let btnRight = document.createElement('button');
 
+btnLeft.innerText = 'LEFT';
+btnRight.innerText = 'RIGHT';
+
+img.width = 300;
+img.height = 300;
 let i = 0;
+img.src = imgArrey[i].img_url;
 
-btnRight.addEventListener("click", function () {
-    ++i
-    if (i >= slides.length) {
-        slides[i-1].classList.remove("block");
-        i = 0;
-        slides[i].classList.add("block");
-    } else {
-        slides[i-1].classList.remove("block");
-        slides[i].classList.add("block");
-    }
-})
+document.body.appendChild(divSeven);
+divSeven.appendChild(btnLeft);
+divSeven.appendChild(img);
+divSeven.appendChild(btnRight);
 
+btnLeft.onclick = () => {
+    i - 1 < 0 ? i = imgArrey.length - 1 : i = i - 1
+    img.src = imgArrey[i].img_url
+}
 
+btnRight.onclick = () => {
+    i + 1 > imgArrey.length - 1 ? i = 0 : i = i + 1
+    img.src = imgArrey[i].img_url
+}
+
+console.log("Task 10______________________________________________________________");
+document.write(`</br> Task 10_______________________________________________________________________`);
 
 // - Сворити масив не цензцрних слів.
-//     Сворити інпут текстового типу.
-//     Якщо людина вводить слово і воно міститься в масиві не цензурних слів
+// Сворити інпут текстового типу.
+// Якщо людина вводить слово і воно міститься в масиві не цензурних слів
 // кинути алерт з попередженням.
-//     Перевірку робити при натисканні на кнопку
-//
-//
+// Перевірку робити при натисканні на кнопку
+
+let badWords = ['fuck', 'bitch', 'asshole'];
+
+let divEight = document.createElement('div');
+let h3 = document.createElement('h3')
+let inputWord = document.createElement('input');
+let btnFive = document.createElement('button');
+
+// h3.innerText = 'Check if your word in not bad';
+h3.innerText = 'Check if your sentence includes bad words';
+btnFive.innerText = 'CHECK'
+
+document.body.appendChild(h3);
+document.body.appendChild(divEight);
+divEight.appendChild(inputWord);
+divEight.appendChild(btnFive);
+
+let badWord = false
+
+// btnFive.onclick = () => {
+//     for (let i = 0; i < badWords.length; i++) {
+//         if (inputWord.value === badWords[i]){
+//             badWord = true
+//         }
+//     }
+//     badWord === true ? alert('NEVER use this word!!!') : alert('This word is OKAY')
+// }
+
 // - Сворити масив не цензцрних слів.
 //     Сворити інпут текстового типу.
 //     Потрібно перевіряти чи не містить ціле речення в собі погані слова.
 //     Кинути алерт з попередженням у випадку якщо містить.
 //     Перевірку робити при натисканні на кнопку
-//
-//
-//
+
+btnFive.onclick = () => {
+    inputWord.value.includes(badWords[i]) ? alert('NEVER use this word!!!') : alert('This word is OKAY')
+}
+
+console.log("Task 11______________________________________________________________");
 // -- создать скрипт, который берет считывает на странице (rules.html) текст и делает сбоку меню-оглавление по всем заголовкам которые есть в тексте.
 //     При клике на пункт оглавления вы должны отправляться к этому пункту в тексте
-//
+
+
+
+
+
+
+
 // -- взять массив пользователей
 // let usersWithAddress = [
 //     {id:1,name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
