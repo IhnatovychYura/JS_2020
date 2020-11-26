@@ -409,37 +409,119 @@ btnFive.onclick = () => {
 }
 
 console.log("Task 11______________________________________________________________");
+document.write(`</br> Task 11_______________________________________________________________________`);
+
 // -- создать скрипт, который берет считывает на странице (rules.html) текст и делает сбоку меню-оглавление по всем заголовкам которые есть в тексте.
 //     При клике на пункт оглавления вы должны отправляться к этому пункту в тексте
 
+let divNine = document.createElement('div');
+let h4 = document.createElement('h4');
+let chapters = document.getElementsByTagName('h2');
+let topDiv = document.getElementById('content');
 
+h4.innerText = 'Постлання на заголовки сайту';
 
+let ul = document.createElement('ul');
+ul.appendChild(h4);
 
+for (let i = 0; i < chapters.length; i++) {
+    let li = document.createElement('li');
+    let a = document.createElement('a');
 
+    let yakor = 'yakor' + i;
+    a.href = '#' + yakor;
+    chapters[i].setAttribute('id', yakor);
 
+    a.innerHTML = chapters[i].innerText
+    li.appendChild(a);
+    ul.appendChild(li);
+}
 
+divNine.appendChild(ul);
+topDiv.appendChild(divNine);
+
+console.log("Task 12______________________________________________________________");
 // -- взять массив пользователей
-// let usersWithAddress = [
-//     {id:1,name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
-//     {id:2,name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
-//     {id:3,name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
-//     {id:4,name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
-//     {id:5,name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
-//     {id:6,name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
-//     {id:7,name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
-//     {id:8,name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
-//     {id:9,name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
-//     {id:10,name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
-//     {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
-// ];
+let usersWithAddress = [
+    {id: 1, name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+    {id: 2, name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+    {id: 3, name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
+    {id: 4, name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
+    {id: 5, name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
+    {id: 6, name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
+    {id: 7, name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
+    {id: 8, name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
+    {id: 9, name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
+    {id: 10, name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+    {id: 11, name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
+];
 // Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива. Фильтры могут работать как вместе так и по отдельности.
 // 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
 // 2й - оставляет старше 29 лет включительно
 // 3й - оставляет тех у кого город киев
 // Данные выводить в документ
-//
-//
-//
+
+let divTen = document.createElement('div');
+let labelOne = document.createElement('label');
+let labelTwo = document.createElement('label');
+let labelThree = document.createElement('label');
+let inputCheckOne = document.createElement('input');
+let inputCheckTwo = document.createElement('input');
+let inputCheckThree = document.createElement('input');
+let btnSix = document.createElement('button')
+
+inputCheckOne.type = 'checkbox';
+inputCheckTwo.type = 'checkbox';
+inputCheckThree.type = 'checkbox';
+
+labelOne.innerText = 'Статус User - false: ';
+labelTwo.innerText = 'User старше 29 років включно:';
+labelThree.innerText = 'Місто Usera - Київ: ';
+
+btnSix.innerText = 'filter';
+
+divTen.appendChild(renderUsers(usersWithAddress));
+document.body.appendChild(divTen);
+document.body.appendChild(labelOne);
+document.body.appendChild(inputCheckOne);
+document.body.appendChild(labelTwo);
+document.body.appendChild(inputCheckTwo);
+document.body.appendChild(labelThree);
+document.body.appendChild(inputCheckThree);
+document.body.appendChild(btnSix);
+
+btnSix.onclick = () => {
+    let usersArray = JSON.parse(JSON.stringify(usersWithAddress));
+    if (inputCheckOne.checked) usersArray = usersArray.filter(value => value.status === false)
+    if (inputCheckTwo.checked) usersArray = usersArray.filter(value => value.age >= 29)
+    if (inputCheckThree.checked) usersArray = usersArray.filter(value => value.address.city === 'Kyiv')
+
+        divTen.innerHTML = '';
+        divTen.appendChild(renderUsers(usersArray))
+    }
+
+
+function renderUsers(usersArray){
+    let mainDiv = document.createElement('div')
+    usersArray.forEach(value => {
+        let div = document.createElement('div');
+        div.style.display = 'inline-block'
+
+        div.innerText = `
+    id: ${value.id};
+    name: ${value.name};
+    age: ${value.age};
+    status: ${value.status};
+    city: ${value.address.city};
+    street: ${value.address.street};
+    number: ${value.address.number};
+    ___________________________________`;
+
+        mainDiv.appendChild(div);
+    })
+    return mainDiv
+}
+
 // *****(Прям овердоз с рекурсией) Создать функцию которая принимает какой-либо элемент DOM-структуры .Функция создает в боди 2 кнопки (назад/вперед)
 // при нажатии вперед, вы переходите к дочернему элементу, при еще одном нажатии на "вперед", вы переходите к следующему дочернему элементу (лежащему на одном уровне)
 // НО если у (какого-либо)дочеренего элемента есть дети, то нажатие "вперед" позволяет нам войти внутрь элемента и  выводит первого ребенка. и тд.
