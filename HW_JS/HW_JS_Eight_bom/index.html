@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW Eight</title>
+</head>
+<body>
+
+<p>Task 1 ______________________________________________________________</p>
+<label for="response"><b>Введіть Ваш відгук про цей сайт:</b></label>
+<br>
+<textarea id="response" cols="30" rows="10"></textarea>
+
+<p>Task 2 ______________________________________________________________</p>
+<h2>АВТОРИЗУЙТЕСЬ БУДЬ ЛАСКА</h2>
+<form action="" id="authorization">
+    <label for="name"><b>Введіть Ваше ім'я:</b></label>
+    <br>
+    <input type="text" id="name">
+    <br>
+    <label for="surname"><b>Введіть Ваше прізвище:</b></label>
+    <br>
+    <input type="text" id="surname">
+    <br>
+    <label for="comments"><b>Введіть звідки Ви почули про наш сайт:</b></label>
+    <br>
+    <textarea id="comments" cols="30" rows="10"></textarea>
+    <br>
+    <label for="permission"><b>Чи дозволяєте Ви обробляти Вашу інформацію:</b></label>
+    <br>
+    <input type="checkbox" id="permission" value="false">
+    <br>
+    <p><b>З якого браузера Ви сидите:</b></p>
+    <input type="radio" id="GC" value="false"> GoogleChrome <br>
+    <input type="radio" id="Saf" value="false"> Safari <br>
+    <input type="radio" id="Op" value="false"> Opera <br>
+    <input type="radio" id="MF" value="false"> MozilaFirefox <br>
+    <input type="radio" id="IE" value="false"> Internet Explorer <br>
+    <br>
+    <select id="rate">
+        <option selected="selected"> Виберіть оцінку</option>
+        <option>Відмінно</option>
+        <option>Добре</option>
+        <option>Нормально</option>
+        <option>Погано</option>
+        <option>Жахливо</option>
+    </select>
+</form>
+
+<p>Task 3 ______________________________________________________________</p>
+<label for="text"><b>Введіть будь-який текст та зберігайте його коли Вам захочеться:</b></label>
+<br>
+<button id="left">Left</button>
+<button id="right">Right</button>
+<br>
+<textarea id="text" cols="30" rows="10"></textarea>
+<button id="saveBtn">Зберегти</button>
+
+<p>Task 4 ______________________________________________________________</p>
+
+<fieldset>
+    <legend>Форма для введення контактів</legend>
+    <form action="" id="addressBookForm">
+        <label for="pip"><b>Введіть Прізвище, Ім'я, По-батькові</b></label>
+        <br>
+        <input type="text" id="pip">
+        <br>
+        <label for="number"><b>Введіть номер телефону</b></label>
+        <br>
+        <input type="text" id="number">
+        <br>
+        <label for="mail"><b>Введіть електронну адресу</b></label>
+        <br>
+        <input type="text" id="mail">
+        <br>
+        <label for="company"><b>Введіть назву компанії</b></label>
+        <br>
+        <input type="text" id="company">
+        <br>
+        <label for="department"><b>Введіть відділ</b></label>
+        <br>
+        <input type="text" id="department">
+        <br>
+        <label for="birthday"><b>Введіть день народження</b></label>
+        <br>
+        <input type="date" id="birthday">
+        <br>
+        <button id="submit">submit</button>
+    </form>
+</fieldset>
+<div id="addressBook"></div>
+
+<script src="main.js"></script>
+</body>
+</html>
