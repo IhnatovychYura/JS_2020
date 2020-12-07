@@ -56,44 +56,111 @@ function userCard(number) {
     let _balance = 100
     let _transactionLimit = 100
     let _historyLogs = []
-    let _key = number
+    let _key = number <= 3 ? number : 'key not valid'
 
-   function getCardOptions(){
-       return {
-        balance: _balance,
-        transactionLimit: _transactionLimit,
-        historyLogs: _historyLogs,
-        key: _key,
+    function getCardOptions() {
+        return {
+            balance: _balance,
+            transactionLimit: _transactionLimit,
+            historyLogs: _historyLogs,
+            key: _key,
         }
-   }
+    }
 
-   function putCredits(money) {
+    function putCredits(money) {
         _balance += money;
-   }
+        _balance = _balance.toFixed(2);
+        console.log(`Ваш баланс на рахунку ${_balance} грн`)
+
+        let operationTime = new Date()
+        let operation = {
+            operationType: 'Received credits',
+            credits: money,
+            operationTime: `${operationTime.getDay()}/${operationTime.getMonth()}/${operationTime.getFullYear()}, ${operationTime.getHours()}:${operationTime.getMinutes()}:${operationTime.getSeconds()}`
+        }
+
+        _historyLogs.push(operation)
+    }
 
     function takeCredits(money) {
-        if (money <= _transactionLimit && _balance >= money){
+        if (money <= _transactionLimit && _balance >= money) {
             _balance -= money;
+            _balance = _balance.toFixed(2);
+            console.log(`Ваш баланс на рахунку ${_balance} грн`)
         } else if (money >= _transactionLimit) {
             console.error(`ПОМИЛКА, Ви бажаєте зняти кошти сумою яка більша за Ваш кредитний ліміт ${_transactionLimit} грн`)
         } else if (_balance <= money) {
             console.error(`ПОМИЛКА, У Вас недостатньо коштів на рахунку ${_balance} грн`)
         }
+
+        let operationTime = new Date()
+        let date = operationTime.toLocaleDateString();
+        let time = operationTime.toLocaleTimeString();
+
+        let operation = {
+            operationType: 'Withdraw of credits',
+            credits: money,
+            operationTime: `${date}, ${time}`
+        }
+
+        _historyLogs.push(operation)
     }
 
     function setTransactionLimit(limit) {
         _transactionLimit = limit;
+        console.log(`Ваш кредитний ліміт ${_transactionLimit} грн`)
+
+        let operationTime = new Date()
+        let date = operationTime.toLocaleDateString();
+        let time = operationTime.toLocaleTimeString();
+
+        let operation = {
+            operationType: 'Transaction limit change',
+            credits: limit,
+            operationTime: `${date}, ${time}`
+        }
+
+        _historyLogs.push(operation)
+    }
+
+    function transferCredits(money, recipient) {
+        let tax = (money * 0.5) / 100
+        if (money + tax <= _transactionLimit && _balance >= money + tax) {
+            _balance -= money + tax;
+            _balance = _balance.toFixed(2);
+            recipient.putCredits(money);
+            console.log(`Транзакція пройшла успішно! Комісія за транзакцію склала ${tax}. Ваш баланс на рахунку ${_balance} грн`)
+        } else if (money >= _transactionLimit) {
+            console.error(`ПОМИЛКА, Ви бажаєте перерахувати кошти сумою більшою за Ваш кредитний ліміт ${_transactionLimit} грн`)
+        } else if (_balance <= money) {
+            console.error(`ПОМИЛКА, У Вас недостатньо коштів на рахунку ${_balance} грн`)
+        }
     }
 
     return {
         getCardOptions,
         putCredits,
         takeCredits,
+        setTransactionLimit,
+        transferCredits,
     }
 }
 
 const card2 = new userCard(2);
 const card3 = new userCard(3);
+
+card3.putCredits(300);
+card3.setTransactionLimit(200);
+console.log(card3.getCardOptions());
+card3.takeCredits(50);
+console.log(card3.getCardOptions());
+card3.transferCredits(40, card2);
+console.log(card2.getCardOptions());
+card3.takeCredits(50);
+console.log(card3.getCardOptions());
+
+console.log("Task 3______________________________________________________________");
+
 
 
 
