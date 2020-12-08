@@ -42,16 +42,6 @@ async function catchLetter(arrayOfLetters) {
 catchLetter(arrString);
 console.log("Task 2______________________________________________________________");
 
-// function userCard(number) {
-//
-//     return {
-//         balance: 100,
-//         transactionLimit: 100,
-//         historyLogs: [],
-//         key: number,
-//     }
-// }
-
 function userCard(number) {
     let _balance = 100
     let _transactionLimit = 100
@@ -146,20 +136,79 @@ function userCard(number) {
     }
 }
 
-const card2 = new userCard(2);
-const card3 = new userCard(3);
-
-card3.putCredits(300);
-card3.setTransactionLimit(200);
-console.log(card3.getCardOptions());
-card3.takeCredits(50);
-console.log(card3.getCardOptions());
-card3.transferCredits(40, card2);
-console.log(card2.getCardOptions());
-card3.takeCredits(50);
-console.log(card3.getCardOptions());
+// const card2 = new userCard(2);
+// const card3 = new userCard(3);
+//
+// card3.putCredits(300);
+// card3.setTransactionLimit(200);
+// console.log(card3.getCardOptions());
+// card3.takeCredits(50);
+// console.log(card3.getCardOptions());
+// card3.transferCredits(40, card2);
+// console.log(card2.getCardOptions());
+// card3.takeCredits(50);
+// console.log(card3.getCardOptions());
 
 console.log("Task 3______________________________________________________________");
+
+class UserAccount {
+    constructor(name, cards) {
+        this.name = name || 'No name';
+        this.cards = [] || 'No cards';
+        this.number = 0;
+    }
+
+    ///////////////////// VARIANT 1 /////////////////////////////
+    addCard() {
+        this.number += 1
+        if (this.number <= 3) {
+            this.cards.push(new userCard(this.number))
+            console.log(this.cards)
+        } else {
+            console.error('ПОМИЛКА! У Вас не може бути більше ніж 3 карток')
+        }
+    }
+
+    getCardByKey(number) {
+        for (let i = 0; i < this.cards.length; i++) {
+            if (number === this.cards[i].getCardOptions().key) {
+                return this.cards[i]
+            }
+        }
+    }
+
+}
+
+///////////////////// VARIANT 2 /////////////////////////////
+///////////////////// Методи записати через Прототипи  /////////////////////////////
+    // UserAccount.prototype.addCard = function() {
+    //     if (this.cards.length < 3){
+    //         this.cards.push(new userCard(this.cards.length+1))
+    //     } else {
+    //         console.log('cards limit over')
+    //     }
+    // }
+    //
+    // UserAccount.prototype.getCardByKey = function(number) {
+    // return this.cards.find(value => value.getCardOptions().key === number)
+    // }
+
+const bob = new UserAccount('Bob')
+
+bob.addCard()
+bob.addCard()
+bob.addCard()
+bob.addCard()
+let bobCard1 = bob.getCardByKey(1);
+let bobCard2 = bob.getCardByKey(2);
+console.log(bobCard1);
+console.log(bobCard2);
+
+bobCard1.putCredits(400);
+bobCard1.transferCredits(50, bobCard2)
+
+console.log(bobCard1.getCardOptions());
+console.log(bobCard2.getCardOptions());
 
 
 
